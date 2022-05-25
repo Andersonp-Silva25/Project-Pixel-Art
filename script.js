@@ -11,7 +11,8 @@ function createColorPalette(QTD) {
       divColorPalette.classList = 'color selected';
     }
     
-    colorPalette.appendChild(divColorPalette);   
+    colorPalette.appendChild(divColorPalette);
+    divColorPalette.addEventListener('click',checkSelected);   
   }
 }
 
@@ -25,10 +26,23 @@ function createLines(lines) {
       let pixel = document.createElement('div');
       pixel.className = 'pixel';
       createDiv.appendChild(pixel);
+      pixel.addEventListener('click', pixelSelected);
     }
 
     pixelBoard.appendChild(createDiv);   
   }
+}
+
+function checkSelected(event){
+  let colorPalette = document.querySelector('.selected');
+  colorPalette.classList.remove('selected');
+  event.target.classList.add('selected');
+}
+
+function pixelSelected(event){
+  let colorPalette = document.querySelector('.selected');
+  let pixelColor = document.querySelector('.pixel');
+  event.target.style.backgroundColor = colorPalette.style.backgroundColor;
 }
 
 createColorPalette(4);
