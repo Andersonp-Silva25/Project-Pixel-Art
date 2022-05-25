@@ -10,7 +10,23 @@ function createColorPalette(QTD) {
     
     colorPalette.appendChild(divColorPalette);   
   }
-  
+}
+
+function createLines(lines) {
+  let pixelBoard = document.querySelector('#pixel-board');
+
+  for (let index = 0; index < lines; index += 1) {
+    let createDiv = document.createElement('div');
+    createDiv.className = 'line';
+    for (let index2 = 0; index2 < lines; index2 +=1) {
+      let pixel = document.createElement('div');
+      pixel.className = 'pixel';
+      createDiv.appendChild(pixel);
+    }
+
+    pixelBoard.appendChild(createDiv);   
+  }
 }
 
 createColorPalette(4);
+createLines(5);
