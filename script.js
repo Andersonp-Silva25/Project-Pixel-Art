@@ -1,5 +1,5 @@
 function createColorPalette(QTD) {
-  let color = ['#836FFF', '#3CB371', '#A0522D', '#4B0082', '#8B0000', '#FFE4B5', '#B0E0E6', '#FFA500', '#FF7F50', '#FFB6C1'];
+  let color = ['#000000', '#3CB371', '#A0522D', '#4B0082', '#8B0000', '#FFE4B5', '#B0E0E6', '#FFA500', '#FF7F50', '#FFB6C1'];
   let colorPalette = document.querySelector('#color-palette');
 
   for (let index = 0; index < QTD; index += 1) {
