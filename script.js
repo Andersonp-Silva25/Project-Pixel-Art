@@ -7,6 +7,9 @@ function createColorPalette(QTD) {
     let divColor = color[index];
     divColorPalette.className = 'color';
     divColorPalette.style.backgroundColor = divColor;
+    if (index === 0){
+      divColorPalette.classList = 'color selected';
+    }
     
     colorPalette.appendChild(divColorPalette);   
   }
