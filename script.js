@@ -41,9 +41,18 @@ function checkSelected(event){
 
 function pixelSelected(event){
   let colorPalette = document.querySelector('.selected');
-  let pixelColor = document.querySelector('.pixel');
   event.target.style.backgroundColor = colorPalette.style.backgroundColor;
 }
+
+function clearButton(){
+  let pixel = document.querySelectorAll('.pixel');
+  for (let index = 0; index < pixel.length; index += 1){
+    pixel[index].style.backgroundColor = 'white';
+  }
+}
+
+const button = document.querySelector('#clear-board');
+button.addEventListener('click', clearButton);
 
 createColorPalette(4);
 createLines(5);
