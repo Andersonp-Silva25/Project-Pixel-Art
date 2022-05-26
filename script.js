@@ -1,12 +1,26 @@
 function createColorPalette(QTD) {
-  let color = ['#000000', '#3CB371', '#A0522D', '#4B0082', '#8B0000', '#FFE4B5', '#B0E0E6', '#FFA500', '#FF7F50', '#FFB6C1'];
+  let color = '#';
+  let hexadecimal = '0123456789ABCDEF';
+  let divColor = ['#000000'];
   let colorPalette = document.querySelector('#color-palette');
+
+  for (let index = 0; index < QTD-1; index += 1) {
+    for (let index = 0; index < 6; index += 1) {
+      color += hexadecimal[Math.floor(Math.random() * 16)];
+    }
+    if (color == 'white' || color == '#FFFFFF' || color == (255, 255, 255)){
+      for (let index = 0; index < 6; index += 1) {
+        color += hexadecimal[Math.floor(Math.random() * 16)];
+      }
+    }
+    divColor.push(color); 
+    color = '#';      
+  }
 
   for (let index = 0; index < QTD; index += 1) {
     let divColorPalette = document.createElement('div');
-    let divColor = color[index];
     divColorPalette.className = 'color';
-    divColorPalette.style.backgroundColor = divColor;
+    divColorPalette.style.backgroundColor = divColor[index];
     if (index === 0){
       divColorPalette.classList = 'color selected';
     }
