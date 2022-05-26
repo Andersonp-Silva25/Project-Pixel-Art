@@ -33,6 +33,16 @@ function createLines(lines) {
   }
 }
 
+function removeLines() {
+  let pixelBoard = document.querySelector('#pixel-board');
+  let line = document.querySelectorAll('.line');
+
+  for (let index = 0; index < line.length; index += 1) {
+    let removeLine = line[index];
+    pixelBoard.removeChild(removeLine);
+  }
+}
+
 function checkSelected(event){
   let colorPalette = document.querySelector('.selected');
   colorPalette.classList.remove('selected');
@@ -51,8 +61,51 @@ function clearButton(){
   }
 }
 
-const button = document.querySelector('#clear-board');
-button.addEventListener('click', clearButton);
+function createClearButton(){
+  let clear = document.querySelector('#clear');
+  let button = document.createElement('button');
+  button.setAttribute('id', 'clear-board');
+  button.innerText = 'Limpar';
+  clear.appendChild(button);
+  button.addEventListener('click', clearButton);
+}
+
+function createBoard(){
+  let pixelBoardSize = document.querySelector('#pixel-board-size');
+  
+  let boardSize = document.createElement('input');
+  boardSize.setAttribute('id', 'board-size');
+  boardSize.setAttribute('type', 'number');
+  boardSize.setAttribute('min', 1);
+  boardSize.setAttribute('max', 50);
+  pixelBoardSize.appendChild(boardSize);
+
+  let generateBoard = document.createElement('button');
+  generateBoard.setAttribute('id', 'generate-board');
+  generateBoard.innerText = 'VQV';
+  pixelBoardSize.appendChild(generateBoard); 
+}
+
+function reSizeBoard(){
+  let boardSize = document.querySelector('#board-size');
+
+  if (boardSize.value == ''){
+    return alert('Board inválido!');
+  }else if (boardSize.value < 5){
+    boardSize.value = 5;
+  } else if (boardSize.value > 50){
+    boardSize.value = 50;
+  }
+
+  removeLines();
+  createLines(boardSize.value);
+}
 
 createColorPalette(4);
+createBoard();
+createClearButton();
 createLines(5);
+
+
+let pixelBoardSize = document.querySelector('#generate-board');
+pixelBoardSize.addEventListener('click', reSizeBoard);
